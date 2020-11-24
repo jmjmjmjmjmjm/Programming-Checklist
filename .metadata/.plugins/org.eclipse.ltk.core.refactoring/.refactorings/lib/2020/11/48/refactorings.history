@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 4 elements to &apos;lib&apos;&#x0D;&#x0A;- Original project: &apos;lib&apos;&#x0D;&#x0A;- Destination element: &apos;lib&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     json-simple-1.1.1.jar&#x0D;&#x0A;     lombok.jar&#x0D;&#x0A;     gson-2.8.5.jar&#x0D;&#x0A;     javaSDK-2.2.jar" description="Copy files" element1="json-simple-1.1.1.jar" element2="lombok.jar" element3="gson-2.8.5.jar" element4="javaSDK-2.2.jar" files="4" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1606198628344" target="/sms/lib" units="0" version="1.0"/>
+</session>

@@ -1,0 +1,89 @@
+package sms;
+
+import java.awt.Container;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.HashMap;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+import org.json.simple.JSONObject;
+
+import net.nurigo.java_sdk.api.Message;
+import net.nurigo.java_sdk.exceptions.CoolsmsException;
+
+public class SmsTest extends JFrame implements ActionListener {
+	public static void into(String number2, JTextField message2) {
+		String api_key = "NCSFTOQRPTFGFJXK";
+		String api_secret = "NNJDRPQRASITJPCTAKX1Y2PXABS5ZWVY";
+		Message coolsms = new Message(api_key, api_secret);
+		HashMap<String, String> params = new HashMap<String, String>();
+		params.put("to",number);
+		params.put("from", "0107163395");
+		params.put("type", "SMS");
+		params.put("text",message);
+		params.put("app_version", "test app 1.2");
+
+		try {
+			JSONObject obj = (JSONObject) coolsms.send(params);
+			System.out.println("메세지가 전송되었습니다.");
+			System.out.println(obj);
+		} catch (CoolsmsException e) {
+			System.out.println(e.getMessage());
+			System.out.println(e.getCode());
+		}
+	}
+
+	private Container c;
+	private JLabel la1, la2;
+	private JButton btn1, btn2;
+	private JTextField number, message;
+
+	public SmsTest() {
+
+		GridLayout grid = new GridLayout(3, 2);
+		setLayout(grid);
+
+		c = getContentPane();
+		la1 = new JLabel("번호");
+		la2 = new JLabel("메시지 입력");
+		number = new JTextField();
+		message = new JTextField();
+		btn1 = new JButton("전송");
+		btn2 = new JButton("초기화");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		add(la1);
+		add(number);
+		add(la2);
+		add(message);
+		add(btn1);
+		add(btn2);
+
+		this.setSize(300, 300);
+		this.setVisible(true);
+		btn1.addActionListener(this);
+		btn2.addActionListener(this);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		JButton btn1 = (JButton) e.getSource();
+		JButton btn2 = (JButton) e.getSource();
+
+		if (btn1.getText().equals("전송")) {
+			into(number, message);
+		}
+
+	}
+
+	public static void main(String[] args) {
+		new SmsTest();
+
+	}
+
+}
